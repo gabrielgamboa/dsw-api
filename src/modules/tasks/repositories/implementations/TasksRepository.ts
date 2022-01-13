@@ -36,9 +36,9 @@ class TasksRepository implements ITasksRepository {
         return await this.repository.findOne({ id: task_id});
     }
 
-    async updateTask(task: Task): Promise<Task> {
+    async updateTask(task: Task, done: boolean): Promise<Task> {
         const taskToUpdate = await this.repository.findOne({ id: task.id });
-        taskToUpdate.done = true;
+        taskToUpdate.done = done;
         const updatedTask = await this.repository.save(taskToUpdate);
 
         return updatedTask;

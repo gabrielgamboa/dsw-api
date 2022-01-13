@@ -4,7 +4,7 @@ import { ListTasksByUserUseCase } from "./ListTasksByUserUseCase";
 
 class ListTasksByUserController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id: user_id } = request.user;
+        const { user_id } = request.params;
 
         const listTasksByUserUseCase = container.resolve(ListTasksByUserUseCase);
         const tasks = await listTasksByUserUseCase.execute(user_id);

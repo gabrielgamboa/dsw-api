@@ -5,7 +5,7 @@ interface ITasksRepository {
     create(data: ICreateTaskDTO): Promise<Task>;
     findByUser(user_id: string): Promise<Task[]>;
     findById(task_id: string): Promise<Task>;
-    updateTask(task: Task): Promise<Task>;
+    updateTask(task: Task, done: boolean): Promise<Task>;
 }
 
 export { ITasksRepository }

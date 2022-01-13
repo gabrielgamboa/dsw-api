@@ -30,7 +30,7 @@ describe("Update task", () => {
             resolve(mockTaskInstance);
         }));
 
-        const task = await updateTaskUseCase.execute(mockTaskInstance.id);
+        const task = await updateTaskUseCase.execute(mockTaskInstance.id, !mockTaskInstance.done);
 
         expect(task.done).toBe(true);
     });
@@ -38,7 +38,7 @@ describe("Update task", () => {
     it("should not be able to update a task if not exists", async () => {
         expect(async () => {
             const mockTaskInstance = mockTask();
-            await updateTaskUseCase.execute(mockTaskInstance.id);
+            await updateTaskUseCase.execute(mockTaskInstance.id, !mockTaskInstance.done);
 
         }).rejects.toBeInstanceOf(AppError);
     });

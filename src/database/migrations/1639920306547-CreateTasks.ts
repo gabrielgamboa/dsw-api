@@ -31,17 +31,6 @@ export class CreateTasks1639920306547 implements MigrationInterface {
                         isNullable: false
                     },
                 ],
-                
-                foreignKeys: [
-                    {
-                        name: "FKTaskUser",
-                        referencedTableName: "users",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["user_id"],
-                        onDelete: "SET NULL",
-                        onUpdate: "SET NULL"
-                    }
-                ]
             }
         ))
     }

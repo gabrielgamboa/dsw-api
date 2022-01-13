@@ -10,13 +10,13 @@ class UpdateTaskUseCase {
         private tasksRepository: ITasksRepository
     ) {}
 
-    async execute(task_id: string): Promise<Task> {
+    async execute(task_id: string, done: boolean): Promise<Task> {
         const taskExists = await this.tasksRepository.findById(task_id);
 
         if (!taskExists)
             throw new AppError("Task not exists");
 
-        const updatedTask = await this.tasksRepository.updateTask(taskExists);
+        const updatedTask = await this.tasksRepository.updateTask(taskExists, done);
 
         return updatedTask;
     }

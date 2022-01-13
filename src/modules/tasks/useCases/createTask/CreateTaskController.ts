@@ -5,8 +5,7 @@ import { CreateTaskUseCase } from "./CreateTaskUseCase";
 
 class CreateTaskController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { name, description } = request.body;
-        const { id: user_id } = request.user;
+        const { name, description, user_id } = request.body;
 
         const createTaskUseCase = container.resolve(CreateTaskUseCase);
         const task = await createTaskUseCase.execute({name, description, user_id});

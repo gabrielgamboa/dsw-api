@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 
-import { User } from "../../accounts/entities/User";
-
 @Entity("tasks")
 class Task {
     @PrimaryColumn()
@@ -16,10 +14,6 @@ class Task {
     
     @Column()
     done?: boolean
-
-    @ManyToOne(type => User, user => user.tasks)
-    @JoinColumn({ name: "user_id"})
-    user?: User;
 
     @Column()
     user_id: string;

@@ -26,8 +26,8 @@ class TasksRepositoryMock implements ITasksRepository {
         return await this.tasks.find(task => task.id === task_id);
     }
 
-    async updateTask(task: Task): Promise<Task> {
-        task.done = true;
+    async updateTask(task: Task, done: boolean): Promise<Task> {
+        task.done = done;
         return task;
     }
 }

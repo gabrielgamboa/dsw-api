@@ -44,12 +44,4 @@ describe("List tasks by user", () => {
 
         expect(sut).toEqual(tasks);
     });
-
-    it("should not be able to list tasks from an user when not exists tasks", async () => {
-        expect(async () => {
-            const tasks = mockTasks();
-            const user_id = tasks[0].user_id;
-            await listTasksByUserUseCase.execute(user_id);
-        }).rejects.toBeInstanceOf(AppError);
-    });
 });
